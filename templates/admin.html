@@ -1,0 +1,41 @@
+{% extends "basic_black.html" %}
+{% block content %}
+<header class="admin-header py-4 text-center">
+  <h1 class="h3 mb-0">Admin Panel – Business Account Requests</h1>
+</header>
+<div class="admin-container container-fluid px-5 ">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Example row -->
+            {% for request in requests %}
+                        <tr>
+                <td>{{ request.id }}</td>
+                <td>{{ request.user.name }} {{ request.user.checkout.surname   }}</td>
+                <td>john@example.com</td>
+                <td>I want to sell smartwatches through your platform.</td>
+                <td><span class="status-badge status-pending">Pending</span></td>
+                <td>
+                    <a href="{{ url_for("approve", user_id=request.user_id) }}" class="btn btn-success btn-sm">Approve</a>
+                    <a href="{{ url_for("reject", user_id=request.user_id) }}" class="btn btn-danger btn-sm">Reject</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

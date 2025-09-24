@@ -1,0 +1,67 @@
+﻿{% extends "basic.html" %}
+{% block content %}
+ <main id="banner">
+    <div class="position-relative" style="background: url('../static/images/banner1.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 60vh;">
+      <div class="container-fluid ">
+        <div class="hero-content text-center position-absolute start-50 top-50 translate-middle">
+          <h2 class="display-2 text-uppercase text-white mb-0 fw-medium">About us</h2>
+
+          <nav class="breadcrumb d-flex justify-content-center mt-3 me-1 text-white">
+            <a class="breadcrumb-item breadcrumb-light text-white" href="{{ url_for("main") }}">Home</a>
+            <a class="breadcrumb-item breadcrumb-light active text-white" aria-current="page">About</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="container-fluid px-md-5 padding-medium">
+    <div class="row align-items-center g-md-5">
+      <div class="col-md-6">
+        <img src="../static/images/banner3.jpg" alt="img" class="img-fluid">
+
+      </div>
+      <div class="col-md-6 mt-5">
+        <h2 class="">How We Started This </h2>
+        <p>In commodo auctor eget congue sit. Ultrices eget pretium sit euismod mi id. Risus, aliquam odio
+          posuere ac in in nisl sed augue. Porta aenean egestas malesuada in pulvinar enim viverra. Lorem ipsum dolor
+          sit amet consectetur adipisicing elit. Adipisci aperiam tempora sed et dolore dignissimos facere cumque qui
+          dicta. Ipsam accusamus vel veritatis nam deleniti nihil alias soluta eos quidem.</p>
+
+        <p class="m-0"> <span class="text-primary">✓</span> Porta aenean egestas malesuada in pulvinar enim
+          viverra.</p>
+        <p class="m-0"> <span class="text-primary">✓</span> Porta aenean egestas malesuada in pulvinar enim
+          viverra.</p>
+        <p class="m-0"> <span class="text-primary">✓</span> Porta aenean egestas malesuada in pulvinar enim
+          viverra.</p>
+        <p class="m-0"> <span class="text-primary">✓</span> Porta aenean egestas malesuada in pulvinar enim
+          viverra.</p>
+        <a href="#" class="btn btn-outline-dark mt-4">
+          Read Blog</a>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid px-md-5 padding-medium pt-0">
+    <div class="row flex-row-reverse align-items-center g-md-5">
+      <div class="col-md-6">
+        <img src="../static/images/banner2.jpg" alt="img" class="img-fluid">
+
+      </div>
+      <div class="col-md-6 mt-5">
+        <h2 class="">You can buy best products from Us. </h2>
+        <p>Aliquet nunc vitae interdum mauris pretium lectus mauris viverra ornare quam diam felis. Ultrices
+          eget pretium sit euismod mi id risus, aliquam odio posuere ac in in nisl sed augue. Porta aenean
+          egestas malesuada in pulvinar enim viverra. ipsum dolor sit amet consectetur. Ipsum ipsum ut
+          pulvinar ipsum cras metus purus mattis integer. Tellus ipsum viverra semper quisque eget nisl
+          vel congue consectetur. </p>
+        <p>Ultrices eget pretium sit euismod mi id risus, aliquam odio posuere ac in in nisl sed augue. Porta aenean
+          egestas malesuada in pulvinar enim viverra. ipsum dolor sit amet consectetur. Ipsum ipsum ut
+          pulvinar ipsum cras metus purus mattis integer. Tellus ipsum viverra semper quisque eget nisl
+          vel congue consectetur. </p>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

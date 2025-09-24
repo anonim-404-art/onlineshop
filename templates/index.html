@@ -1,0 +1,260 @@
+﻿{% extends "basic.html" %}
+{% block content %}
+    <main id="billboard">
+        <div class="position-relative"
+             style="background: url('../static/images/header-img.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 100vh;">
+            <div class="container">
+                <div class="offset-2 position-absolute top-50 start-0 translate-middle-y">
+                    <p class="fs-2 text-white">up to 30% off</p>
+                    <h2 class="display-1 text-white fw-medium  mt-3">The Best apple <br> watch series</h2>
+                    <a href="{{ url_for("shop") }}" class="btn btn-outline-light mt-3">SHOP COLLECTION </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section id="collection">
+        <div class="container-fluid">
+            <div class="row mt-4">
+                <div class="col-lg-6 ps-lg-0">
+                    <div class="position-relative img-fluid"
+                         style=" background: url('../static/images/game-section.jpg');background-size: cover; background-repeat: no-repeat; background-position: center; height: 100vh;">
+                        <div class="text position-absolute text-center m-auto w-100 top-50 bg-white bg-opacity-10 py-5">
+                            <h3 class="display-4 fw-medium text-white mb-3">Deal Of the day</h3>
+                            <p class="fs-3 text-white">Up to 45% off on laptops</p>
+                            <div>
+                                <a href="{{ url_for("shop") }}" class="btn btn-light mt-3">SHOP Now </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 pe-lg-0">
+                    <div class="position-relative img-fluid"
+                         style="background: url('../static/images/off-section.jpg');background-size: cover; background-repeat: no-repeat; background-position: center; height: 100vh;">
+                        <div class="text position-absolute text-center m-auto w-100 top-50 bg-white bg-opacity-10 py-5">
+                            <h3 class="display-4 fw-medium text-white mb-3">The Best Selling</h3>
+                            <p class="fs-3 text-white">Starting price from $100</p>
+                            <div>
+                                <a href="{{ url_for("shop") }}" class="btn btn-light mt-3">SHOP Now </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="new-arrivals" class="position-relative padding-medium">
+        <div class="container-fluid">
+            <div class="d-block d-md-flex justify-content-between align-items-center mb-4">
+                <h3 class="display-5 fw-medium ">NEW ARRIVAL ITEMS</h3>
+                <div><a href="#" class="btn btn-dark">SHOP ALL</a></div>
+            </div>
+            <div class="swiper mySwiper">
+
+                <div class="swiper-wrapper">
+                    {% for date in date %}
+                        <div class="swiper-slide">
+                            <div class="product-item position-relative">
+                                <img style="height: 400px;" src="{{ date.images }}" alt="new1" class="img-fluid">
+                                <div class="cart-concern">
+                                    <div class="cart-button d-flex justify-content-between align-items-center px-4">
+                                        <a href="{{ url_for("add_cart", product_id=date.id) }}"
+                                           class="btn-wrap cart-link d-flex align-items-center text-capitalize fs-6 ">add
+                                            to cart
+                                            <svg class="arrow" width="20" height="20">
+                                                <use href="#arrow-right"></use>
+                                            </svg>
+                                        </a>
+                                        <a href="{{ url_for("single_product", product_id=date.id) }}"
+                                           class="view-btn">
+                                            <svg class="expand" width="16" height="16">
+                                                <use href="#expand"></use>
+                                            </svg>
+                                        </a>
+                                        {% if date.id in wishlist_product_ids %}
+                                            <a href="{{ url_for('wishlist_delete', product_id=date.id) }}"
+                                               class="wishlist-btn">
+                                                <svg style="color: red" class="wishlist" width="20" height="20">
+                                                    <use href="#wishlist"></use>
+                                                </svg>
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ url_for('wishlist_product', product=date.id) }}"
+                                               class="wishlist-btn">
+                                                <svg class="wishlist" width="20" height="20">
+                                                    <use href="#wishlist"></use>
+                                                </svg>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <h5><a href="#" class="item-name">{{ date.name }}</a></h5>
+                                    <h5 class="money fw-bold ">${{ date.price }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="swiper-pagination new-arrival-pagination position-relative d-block d-lg-none mt-4"></div>
+        </div>
+        </div>
+    </section>
+
+    <section id="review">
+        <h3 class="display-1 mb-5 text-muted opacity-25 fw-medium secondary-font">CUSTOMER'S REVIEWS</h3>
+        <div class="container">
+            <div class="swiper testimonial-Swiper text-center">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <p class="review fw-light fs-5 lh-base">"Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Voluptate non
+                            explicabo ea possimus consequuntur vel."</p>
+                        <span class="fw-bold d-block mt-3">JOHN DOE</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <p class="review fw-light fs-5 lh-base">"Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Voluptate non
+                            explicabo ea possimus consequuntur vel."</p>
+                        <span class="fw-bold d-block mt-3">WILLIAM JACK</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <p class="review fw-light fs-5 lh-base">"Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Voluptate non
+                            explicabo ea possimus consequuntur vel."</p>
+                        <span class="fw-bold d-block mt-3">NICHOLAS SHRESTHA</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <p class="review fw-light fs-5 lh-base">"Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Voluptate non
+                            explicabo ea possimus consequuntur vel."</p>
+                        <span class="fw-bold d-block mt-3">WILLIAM JACK</span>
+                    </div>
+                    <div class="swiper-slide">
+                        <p class="review fw-light fs-5 lh-base">"Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Voluptate non
+                            explicabo ea possimus consequuntur vel."</p>
+                        <span class="fw-bold d-block mt-3">NICHOLAS SHRESTHA</span>
+                    </div>
+                </div>
+                <div class="swiper-pagination testimonial-pagination position-relative mt-5"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="video-modish" class="padding-medium">
+        <div class="imageblock position-relative">
+            <img class="img-fluid" src="../static/images/video.jpg" alt="img">
+            <a type="button" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/W_tIumKa8VY"
+               data-bs-target="#myModal" class="play-btn position-absolute top-50 start-50 translate-middle">
+                <div class="play border border-2 border-white p-4 p-md-5 rounded-circle">
+                    <svg class="play-icon text-white" width="60" height="60">
+                        <use href="#play"></use>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="best-selling" class="position-relative ">
+        <div class="container-fluid">
+            <div class="d-block d-md-flex justify-content-between align-items-center mb-4">
+                <h3 class="display-5 fw-medium ">Best-Selling ITEMS</h3>
+                <div><a href="#" class="btn btn-dark">SHOP ALL</a></div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    {% for product in products %}
+                        <div class="swiper-slide">
+                            <div class="product-item position-relative">
+                                <img style="height: 400px;" src="{{ product.images }}" alt="new1" class="img-fluid">
+                                <div class="cart-concern">
+                                    <div class="cart-button d-flex justify-content-between align-items-center px-4">
+                                        <a href="{{ url_for("add_cart", product_id=product.id) }}"
+                                           class="btn-wrap cart-link d-flex align-items-center text-capitalize fs-6 ">add
+                                            to cart
+                                            <svg class="arrow" width="20" height="20">
+                                                <use href="#arrow-right"></use>
+                                            </svg>
+                                        </a>
+                                        <a href="{{ url_for("single_product", product_id=product.id) }}"
+                                           class="view-btn">
+                                            <svg class="expand" width="16" height="16">
+                                                <use href="#expand"></use>
+                                            </svg>
+                                        </a>
+                                        {% if date.id in wishlist_product_ids %}
+                                            <a href="{{ url_for('wishlist_delete', product_id=product.id) }}"
+                                               class="wishlist-btn">
+                                                <svg style="color: red" class="wishlist" width="20" height="20">
+                                                    <use href="#wishlist"></use>
+                                                </svg>
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ url_for('wishlist_product', product=product.id) }}"
+                                               class="wishlist-btn">
+                                                <svg class="wishlist" width="20" height="20">
+                                                    <use href="#wishlist"></use>
+                                                </svg>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <h5><a href="#" class="item-name">{{ product.name }}</a></h5>
+                                    <h5 class="money fw-bold ">${{ product.price }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <div class="swiper-pagination new-arrival-pagination position-relative d-block d-lg-none mt-4"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blogs" class="padding-medium">
+        <div class="container-fluid">
+            <div class="d-block d-md-flex justify-content-between align-items-center mb-4">
+                <h3 class="display-5 fw-medium">NEWS ARTICLES</h3>
+                <div><a href="{{ url_for("blog") }}" class="btn btn-dark">read all</a></div>
+            </div>
+            <div class="article">
+                <div class="row">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <a href="{{ url_for("single_post") }}"> <img src="../static/images/article1.jpg"
+                                                                     class="img-fluid"
+                                                                     alt="blog-img">
+                        </a>
+                        <h5 class="fs-3 mt-2"><a href="{{ url_for("single_post") }}" class="article-names">Best electric
+                            product to
+                            buy this season.</a></h5>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <a href="{{ url_for("single_post") }}"> <img src="../static/images/article2.jpg"
+                                                                     class="img-fluid" alt="blog-img">
+                        </a>
+                        <h5 class="fs-3 mt-2"><a href="{{ url_for("single_post") }}" class="article-names">How to follow
+                            the trend
+                            in budget
+                            list.</a></h5>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <a href="{{ url_for("single_post") }}"> <img src="../static/images/article5.jpg"
+                                                                     class="img-fluid"
+                                                                     alt="blog-img">
+                        </a>
+                        <h5 class="fs-3 mt-2"><a href="{{ url_for("single_post") }}" class="article-names">unique gadget
+                            to own by
+                            tech collectors.</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,178 @@
+﻿{% extends "basic_black.html" %}
+{% block content %}
+<main id="banner">
+    <div class="container-fluid padding-medium">
+        <div class="hero-content text-center">
+            <h2 class="display-2 text-uppercase mb-0 fw-medium">Account</h2>
+            <nav class="breadcrumb d-flex justify-content-center mt-3 me-1">
+                <a class="breadcrumb-item" href="{{ url_for("main") }}">Home</a>
+                <a class="breadcrumb-item active" aria-current="page">Account</a>
+            </nav>
+        </div>
+    </div>
+</main>
+
+<section class="login-tabs padding-medium pt-0">
+    <div class="container ">
+        <div class="row">
+            <div class="tabs-listing">
+                <nav>
+                    <div class="nav nav-tabs d-flex justify-content-center border-dark-subtle pb-3" id="nav-tab"
+                         role="tablist">
+                        <button class="nav-link account-tab mx-3 fs-4 text-capitalize fw-semibold active"
+                                id="nav-sign-in-tab" data-bs-toggle="tab" data-bs-target="#nav-sign-in" type="button"
+                                role="tab" aria-controls="nav-sign-in" aria-selected="true">Log In
+                        </button>
+                        <button class="nav-link account-tab mx-3 fs-4  text-capitalize fw-semibold"
+                                id="nav-register-tab" data-bs-toggle="tab" data-bs-target="#nav-register" type="button"
+                                role="tab" aria-controls="nav-register" aria-selected="false">Sign Up
+                        </button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane active show" id="nav-sign-in" role="tabpanel"
+                         aria-labelledby="nav-sign-in-tab">
+                        <div class="col-lg-8 offset-lg-2 mt-5">
+
+                            <p class="mb-0">Log-In With Social</p>
+                            <hr class="my-1">
+                            <div class="row mt-4 mb-5">
+                                <div class="d-grid col-md-6 my-2">
+                                    <a href="#" class="btn btn-outline-dark py-4 px-5">
+                                        <div class="d-flex flex-wrap justify-content-center align-items-center">
+                                            <svg class="cart" width="15" height="15">
+                                                <use href="#google"></use>
+                                            </svg>
+                                            <p class="mb-0 pt-1 ps-3">Google</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="d-grid col-md-6 my-2">
+                                    <a href="#" class="btn btn-outline-dark py-4 px-5">
+                                        <div class="d-flex flex-wrap justify-content-center align-items-center">
+                                            <svg class="cart" width="15" height="15">
+                                                <use href="#facebook"></use>
+                                            </svg>
+                                            <p class="mb-0 pt-1 ps-3">Facebook</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <p class="mb-0">Or Log-In With Email</p>
+                            <hr class="my-1">
+
+                            <div id="form1"  class="form-group flex-wrap ">
+                                <form action="{{ url_for("login") }}" method="post" class="form-input col-lg-12 my-4">
+                                    <input type="text" id="exampleInputEmail1" name="email" placeholder="Enter email address" class="form-control mb-3 p-4">
+                                    <input type="password" id="inputPassword1" name="password" placeholder="Enter password" class="form-control mb-3 p-4" aria-describedby="passwordHelpBlock">
+                                    <label class="py-3 d-flex flex-wrap justify-content-between">
+                                        <div>
+                                            <input type="checkbox" class="d-inline">
+                                            <span class="label-body ">Remember Me</span>
+                                        </div>
+                                        <div id="passwordHelpBlock" class="form-text ">
+                                            <a href="#" class="text-primary  fw-bold"> Forgot Password?</a>
+                                        </div>
+                                    </label>
+                                    <div class="d-grid my-3">
+                                        <button class="btn btn-dark btn-lg rounded-1">Log In</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
+                        <div class="col-lg-8 offset-lg-2 mt-5">
+
+                            <p class="mb-0">Sign-up With Social</p>
+                            <hr class="my-1">
+                            <div class="row mt-4 mb-5">
+                                <div class="d-grid col-md-6 my-2">
+                                    <a href="#" class="btn btn-outline-dark py-4 px-5">
+                                        <div class="d-flex flex-wrap justify-content-center align-items-center">
+                                            <svg class="cart" width="15" height="15">
+                                                <use href="#google"></use>
+                                            </svg>
+                                            <p class="mb-0 pt-1 ps-3">Google</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="d-grid col-md-6 my-2">
+                                    <a href="#" class="btn btn-outline-dark py-4 px-5">
+                                        <div class="d-flex flex-wrap justify-content-center align-items-center">
+                                            <svg class="cart" width="15" height="15">
+                                                <use href="#facebook"></use>
+                                            </svg>
+                                            <p class="mb-0 pt-1 ps-3">Facebook</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <p class="mb-0">Or Sign-Up With Email</p>
+                            <hr class="my-1">
+
+                            <form id="form1" action="{{ url_for('register') }}" method="post"
+                                  class="form-group flex-wrap ">
+                                <div class="form-input col-lg-12 my-4">
+
+                                    <input type="text" id="exampleInputName" name="name" placeholder="Your name"
+                                           class="form-control mb-3 p-4">
+                                    <input type="text" id="exampleInputName" name="surname" placeholder="Your surname
+"
+                                           class="form-control mb-3 p-4">
+                                    <input type="text" id="exampleInputEmail1" name="email"
+                                           placeholder="Your email address" class="form-control mb-3 p-4">
+                                    <input type="password" id="inputPassword1" name="password"
+                                           placeholder="Set your password" class="form-control mb-3 p-4"
+                                           aria-describedby="passwordHelpBlock">
+                                    <input type="password" id="inputPassword2" name="check_password"
+                                           placeholder="Retype your password" class="form-control mb-3 p-4"
+                                           aria-describedby="passwordHelpBlock">
+
+                                    <label class="py-3 d-flex flex-wrap justify-content-between">
+                                        <div>
+                                            <input type="checkbox" class="d-inline">
+                                            <span class="label-body ">Remember Me</span>
+                                        </div>
+
+                                        <div id="passwordHelpBlock" class="form-text ">
+                                            <a href="#" class="text-primary  fw-bold"> Forgot Password?</a>
+                                        </div>
+                                    </label>
+                                    <div class="d-grid my-3">
+                                        <button class="btn btn-dark btn-lg rounded-1">Sign Up</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="video-modish">
+    <div class="imageblock position-relative">
+        <img class="img-fluid" src="../static/images/video.jpg" alt="img">
+        <a type="button" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/W_tIumKa8VY"
+           data-bs-target="#myModal" class="play-btn position-absolute top-50 start-50 translate-middle">
+            <div class="play border border-2 border-white p-4 p-md-5 rounded-circle">
+                <svg class="play-icon text-white" width="60" height="60">
+                    <use href="#play"></use>
+                </svg>
+            </div>
+        </a>
+    </div>
+</section>
+{% endblock %}
+
+

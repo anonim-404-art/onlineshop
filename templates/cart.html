@@ -1,0 +1,129 @@
+﻿{% extends "basic.html" %}
+{% block content %}
+    <main id="banner">
+        <div class="position-relative"
+             style="background: url('../static/images/banner1.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 60vh;">
+            <div class="container-fluid ">
+                <div class="hero-content text-center position-absolute start-50 top-50 translate-middle">
+                    <h2 class="display-2 text-uppercase text-white mb-0 fw-medium">Cart</h2>
+
+                    <nav class="breadcrumb d-flex justify-content-center mt-3 me-1 text-white">
+                        <a class="breadcrumb-item breadcrumb-light text-white" href="{{ url_for("main") }}">Home</a>
+                        <a class="breadcrumb-item breadcrumb-light active text-white" aria-current="page">Cart</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section id="cart">
+        <div class="container-fluid px-md-5 padding-medium">
+            <div class="row">
+                <div class="col-md-8 pe-md-5">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="card-title text-uppercase">Product</th>
+                            <th scope="col" class="card-title text-uppercase text-end">Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in cart.product %}
+                            <tr class="align-middle border-bottom">
+                                <!-- PRODUCT column -->
+                                <td scope="row" class="py-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="card-image me-3">
+                                            <img src="{{ item.images }}" alt="{{ item.name }}"
+                                                 class="img-fluid rounded-3 shadow-sm" style="max-width: 90px;">
+                                        </div>
+                                        <div class="card-detail">
+                                            <h5 class="card-title mb-1">
+                                                <a href="#" class="text-decoration-none fw-bold text-dark">
+                                                    {{ item.name }}
+                                                </a>
+                                            </h5>
+                                            <small class="text-muted">Exclusive Collection</small>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <!-- PRICE column -->
+                                <td class="py-4 align-middle">
+                                    <div class="d-flex align-items-center justify-content-end gap-3">
+                                        <div class="fw-semibold text-dark mb-0 d-flex">
+                                            $ <h5 class="fw-semibold text-dark mb-0 price">{{ item.price }}</h5>
+                                        </div>
+                                        <a href="{{ url_for('delete_cart', store_id=item.id) }}" class="text-danger"
+                                           title="Remove">
+                                            <i class="fa-solid fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="col-md-4 ">
+                    <div class="cart-totals mt-5 mt-lg-0">
+                        <h2 class="pb-4">Cart Total</h2>
+                        <div class="total-price pb-4">
+                            <table cellspacing="0" class="table text-uppercase">
+                                <tbody>
+                                <tr class="subtotal pt-2 pb-2 border-top border-bottom">
+                                    <th>Subtotal</th>
+                                    <td data-title="Subtotal">
+                      <span class="price-amount amount text-dark ps-5">
+                        <bdi>
+                          <span class="subtotal fw-bold">$<span id="subtotal" class="subtotal-value">0</span></span>
+                        </bdi>
+                      </span>
+                                    </td>
+                                </tr>
+                                <tr class="order-total pt-2 pb-2 border-bottom">
+                                    <th>Total</th>
+                                    <td data-title="Total">
+                                        <span class="price-amount amount text-dark ps-5">
+                                            <bdi id="total"></bdi>
+                                        </span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="button-wrap row g-2">
+                            <div class="col-md-6 update">
+                                <button class="btn btn-outline-dark p-3 w-100 update">Update Cart</button>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="{{ url_for("shop") }}" class="btn btn-outline-dark p-3 w-100">Continue Shop</a>
+                            </div>
+
+                            {% if data_check %}
+                                {% if check %}
+                                    <div class="col-md-12 mt-3" id="checout">
+                                        <a href="{{ url_for("order_page") }}"
+                                           class="btn btn-dark p-3 w-100">Proceed
+                                            to order</a>
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                {% if check %}
+                                    <div class="col-md-12 mt-3" id="checout">
+                                        <a href="{{ url_for("checkout") }}"
+                                           class="btn btn-dark p-3 w-100">Proceed
+                                            to checkout</a>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p id="response"></p>
+    </section>
+{% endblock %}
+

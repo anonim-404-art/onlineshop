@@ -1,0 +1,107 @@
+﻿{% extends "basic_black.html" %}
+{% block content %}
+     <main id="banner">
+    <div class="container-fluid padding-medium">
+      <div class="hero-content text-center">
+        <h2 class="display-2 text-uppercase mb-0 fw-medium">Contact Us</h2>
+        <nav class="breadcrumb d-flex justify-content-center mt-3 me-1">
+          <a class="breadcrumb-item" href="{{ url_for("main") }}">Home</a>
+          <a class="breadcrumb-item active" aria-current="page">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <section class="contact-us">
+    <div class="container-fluid px-md-5 ">
+      <div class="row flex-row-reverse">
+        <div class="inquiry-item col-lg-6 pb-5 pb-lg-0">
+          <div class="rounded-5">
+            <h2 class="text-dark">Get in Touch</h2>
+            <p>Use the form below to get in touch with us.</p>
+            <form name="contactform" action="{{ url_for("contact") }}" method="post" class="form-group contact-form mt-4">
+              <div class="form-input col-lg-12 d-flex justify-content-between mb-3">
+                <div class="w-100 me-3">
+                  <label class="mb-2 fs-6 text-dark">Your Name*</label>
+                  <input type="text" name="name" placeholder="Write Your Name Here" class="form-control shadow-none px-3 py-2" required="">
+                </div>
+                <div class="w-100">
+                  <label class="mb-2 fs-6 text-dark">Your E-mail*</label>
+                  <input type="email" name="email" placeholder="Write Your Email Here" class="form-control shadow-none px-3 py-2" required="">
+                </div>
+
+              </div>
+              <div class="col-lg-12 mb-3">
+                <label class="mb-2 fs-6 text-dark">Phone Number</label>
+                <input type="number" name="phone" placeholder="Phone Number" class="form-control shadow-none px-3 py-2">
+              </div>
+              <div class="col-lg-12 mb-3">
+                <label class="mb-2 fs-6 text-dark">Subject</label>
+
+                <input type="text" name="subject" placeholder="Write Your Subject Here" class="form-control shadow-none px-3 py-2">
+              </div>
+              <div class="col-lg-12 mb-3">
+                <label class="mb-2 fs-6 text-dark">Your Message*</label>
+
+                <textarea name="message" placeholder="Write Your Message Here" class="form-control shadow-none px-3 py-2" style="height:150px;" required=""></textarea>
+              </div>
+              <div class="d-grid">
+                <button type="submit" name="submit" class="btn btn-arrow btn-primary btn-lg btn-dark fs-6">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="contact-info col-lg-6 ">
+          <h2 class="text-dark">Contact Information</h2>
+          <p>Tortor dignissim convallis aenean et tortor at risus viverra adipiscing.</p>
+          <div class="page-content d-flex flex-wrap mt-5">
+            <div class="col-lg-6 col-sm-12">
+              <div class="content-box text-dark pe-4 mb-5">
+                <h4 class="card-title">Office</h4>
+                <div class="contact-address pt-3">
+                  <p>730 Glenstone Ave 65802, Springfield, US</p>
+                </div>
+                <div class="contact-number">
+                  <p>
+                    <a href="#">+123 987 321</a>
+                  </p>
+                  <p>
+                    <a href="#">+123 123 654</a>
+                  </p>
+                </div>
+                <div class="email-address">
+                  <p>
+                    <a href="#">contactoffice@website.com</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+              <div class="content-box text-dark">
+                <h4 class="card-title">Management</h4>
+                <div class="contact-address pt-3">
+                  <p>730 Glenstone Ave 65802, Springfield, US</p>
+                </div>
+                <div class="contact-number">
+                  <p>
+                    <a href="#">+123 987 321</a>
+                  </p>
+                  <p>
+                    <a href="#">+123 123 654</a>
+                  </p>
+                </div>
+                <div class="email-address">
+                  <p>
+                    <a href="#">contactmanagement@website.com</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock %}

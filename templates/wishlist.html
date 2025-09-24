@@ -1,0 +1,82 @@
+﻿{% extends "basic.html" %}
+{% block content %}
+<main id="banner">
+    <div class="position-relative"
+         style="background: url('../static/images/banner1.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 60vh;">
+        <div class="container-fluid ">
+            <div class="hero-content text-center position-absolute start-50 top-50 translate-middle">
+                <h2 class="display-2 text-uppercase text-white mb-0 fw-medium">Wishlist</h2>
+
+                <nav class="breadcrumb d-flex justify-content-center mt-3 me-1 text-white">
+                    <a class="breadcrumb-item breadcrumb-light text-white" href="{{ url_for("main") }}">Home</a>
+                    <a class="breadcrumb-item breadcrumb-light active text-white" aria-current="page">Wishlist</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</main>
+
+<section id="Wishlist">
+    <div class="container padding-medium">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col" class="card-title text-uppercase">Product</th>
+                <th scope="col" class="card-title text-uppercase">Unit Price</th>
+                <th scope="col" class="card-title text-uppercase">Stock Status</th>
+                <th scope="col" class="card-title text-uppercase"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for wishlist in wishlists %}
+             <tr>
+                <td class="py-4">
+                    <div class="cart-info d-flex flex-wrap align-items-center ">
+                        <div class="col-lg-3">
+                            <div class="card-image">
+                                <img src="{{ wishlist.product.images }}" alt="cloth" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="card-detail ps-3">
+                                <h5 class="card-title">
+                                    <a href="{{ url_for("single_product", product_id=wishlist.product.id) }}" class="text-decoration-none fw-semibold">{{ wishlist.product.name }}</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="py-4 align-middle">
+                    <div class="total-price">
+                        <span class="secondary-font fw-medium">${{ wishlist.product.price }}</span>
+                    </div>
+                </td>
+                <td class="py-4 align-middle">
+                    <div class="total-price">
+                        <span class="secondary-font fw-medium">In Stock</span>
+                    </div>
+                </td>
+                <td class="py-4 align-middle">
+                    <div class="d-flex align-items-center">
+                        <div class="me-4">
+                            <a href="{{ url_for("add_cart", product_id=wishlist.product.id) }}" class="btn btn-dark p-3 text-uppercase fs-6 btn-rounded-none w-100">Add to
+                                cart
+                            </a>
+                        </div>
+                        <div class="cart-remove">
+                            <a href="#">
+                                <svg width="24" height="24">
+                                    <use href="#trash"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{% endblock %}

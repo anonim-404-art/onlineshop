@@ -1,0 +1,213 @@
+﻿{% extends "basic.html" %}
+{% block content %}
+    <main id="banner">
+        <div class="position-relative"
+             style="background: url('../static/images/banner1.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 60vh;">
+            <div class="container-fluid ">
+                <div class="hero-content text-center position-absolute start-50 top-50 translate-middle">
+                    <h2 class="display-2 text-uppercase text-white mb-0 fw-medium">Shop</h2>
+
+                    <nav class="breadcrumb d-flex justify-content-center mt-3 me-1 text-white">
+                        <a class="breadcrumb-item breadcrumb-light text-white" href="{{ url_for("main") }}">Home</a>
+                        <a class="breadcrumb-item breadcrumb-light active text-white" aria-current="page">Shop</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+    <section id="shop">
+        <div class="container-fluid px-md-5 padding-medium">
+            <div class="row flex-md-row-reverse mb-5 mb-lg-0">
+
+                <main class="col-md-9 product-store">
+                    <div class="filter-shop d-md-flex justify-content-between align-items-center">
+                        <div class="showing-product">
+                            <p class="m-0">Showing 1–9 of 55 results</p>
+                        </div>
+                        <div class="sort-by">
+                            <select class="filter-categories border-0 m-0">
+                                <option value="">Default sorting</option>
+                                <option value="">Name (A - Z)</option>
+                                <option value="">Name (Z - A)</option>
+                                <option value="">Price (Low-High)</option>
+                                <option value="">Price (High-Low)</option>
+                                <option value="">Rating (Highest)</option>
+                                <option value="">Rating (Lowest)</option>
+                                <option value="">Model (A - Z)</option>
+                                <option value="">Model (Z - A)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row element">
+                        {% for product in products %}
+                            <div class="col-md-6 col-lg-4 my-4">
+                                <div class="product-item position-relative">  <!-- ✅ ADD position-relative here -->
+
+                                    <!-- ✅ MOVE "New" badge INSIDE .product-item -->
+                                    <div class="z-1 position-absolute rounded-3 m-3 px-3 py-0 fs-6 bg-light text-dark"
+                                         style="top: 0; left: 0;">
+                                        New
+                                    </div>
+
+                                    <div class="image-holder">
+                                        <img src="{{ product.images }}" alt="Books" class="image_shop">
+                                    </div>
+                                    <div class="cart-concern">
+                                        <div class="cart-button d-flex justify-content-between align-items-center">
+                                            <a href="{{ url_for("add_cart", product_id=product.id) }}"
+                                               class="btn-wrap cart-link d-flex align-items-center text-capitalize fs-6 ">add
+                                                to cart
+                                                <svg class="arrow" width="20" height="20">
+                                                    <use href="#arrow-right"></use>
+                                                </svg>
+                                            </a>
+                                            <a href="{{ url_for("single_product", product_id=product.id) }}"
+                                               class="view-btn">
+                                                <svg class="expand" width="16" height="16">
+                                                    <use href="#expand"></use>
+                                                </svg>
+                                            </a>
+                                            {% if product.id in wishlist_product_ids %}
+                                                <a href="{{ url_for('wishlist_delete', product_id=product.id) }}"
+                                                   class="wishlist-btn">
+                                                    <svg style="color: red" class="wishlist" width="20" height="20">
+                                                        <use href="#wishlist"></use>
+                                                    </svg>
+                                                </a>
+                                            {% else %}
+                                                <a href="{{ url_for('wishlist_product', product=product.id) }}"
+                                                   class="wishlist-btn">
+                                                    <svg class="wishlist" width="20" height="20">
+                                                        <use href="#wishlist"></use>
+                                                    </svg>
+                                                </a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-2">
+                                        <h5><a href="#" class="item-name">{{ product.name }}</a></h5>
+                                        <h5 class="money fw-bold">${{ product.price }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <nav class="navigation paging-navigation text-center mt-5" role="navigation">
+                        <div class="pagination loop-pagination d-flex justify-content-center align-items-center">
+                            <a href="" class="btn btn-light rounded d-none d-lg-flex me-2">previous</a>
+                            <span aria-current="page" class="page-numbers fs-4 mx-3 current">1</span>
+                            <a class="page-numbers fs-4 mx-3" href="#">2</a>
+                            <a class="page-numbers fs-4 mx-3" href="#">3</a>
+                            <a href="" class="btn btn-dark rounded d-none d-lg-flex ms-2">next</a>
+                        </div>
+                    </nav>
+
+                </main>
+                <aside class="col-md-3 mt-5">
+                    <div class="sidebar">
+                        <div class="widget-menu">
+                            <div class="widget-search-bar">
+                                <div class="search-bar border rounded-2 border-dark-subtle pe-3">
+                                    <form id="search-form" class="text-center d-flex align-items-center" action=""
+                                          method="">
+                                        <input type="text" class="form-control border-0 bg-transparent"
+                                               placeholder="Search for products">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewbox="0 0 24 24">
+                                            <path fill="currentColor"
+                                                  d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z"></path>
+                                        </svg>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <form action="{{ url_for('shop') }}" method="post" class="widget-product-categories pt-5">
+                            <h4 class="widget-title">Categories</h4>
+                            <ul class="product-categories sidebar-list list-unstyled">
+                                <li class="cat-item">
+                                    <button style="text-decoration: none; color: black" type="submit" name="category"
+                                            value="all"
+                                            class="fw-semibold btn btn-link p-0">All
+                                    </button>
+                                </li>
+                                <li class="cat-item">
+                                    <button style="text-decoration: none; color: black" type="submit" name="category"
+                                            value="laptop"
+                                            class="fw-semibold btn btn-link p-0">Laptops
+                                    </button>
+                                </li>
+                                <li class="cat-item">
+                                    <button style="text-decoration: none; color: black" type="submit" name="category"
+                                            value="smartphone"
+                                            class="fw-semibold btn btn-link p-0">Smartphones
+                                    </button>
+                                </li>
+                                <li class="cat-item">
+                                    <button style="text-decoration: none; color: black" type="submit" name="category"
+                                            value="accessory"
+                                            class="fw-semibold btn btn-link p-0">Accessories
+                                    </button>
+                                </li>
+                                <li class="cat-item">
+                                    <button style="text-decoration: none; color: black" type="submit" name="category"
+                                            value="other"
+                                            class="fw-semibold btn btn-link p-0">Other
+                                    </button>
+                                </li>
+                            </ul>
+                        </form>
+
+
+                        <div class="widget-product-brands pt-3">
+                            <h4 class="widget-title">Brands</h4>
+                            <form action="{{ url_for('shop') }}" method="post" style="max-width: 200px;">
+                                <select class="form-select fw-semibold brand-filter small-select brand"
+                                        aria-label="Filter by brand"
+                                        name="brand"
+                                        onchange="this.form.submit()">
+                                <option value="">Select</option>
+                                <option value="all">all</option>
+                                    {% set seen = [] %}
+
+                                    {% for product in products %}
+                                        {% if product.brand and product.brand not in seen %}
+                                            {% set _ = seen.append(product.brand) %}
+                                            <option value="{{ product.brand }}">{{ product.brand }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </form>
+
+                        </div>
+
+                        <form action="{{ url_for("shop") }}" method="post" class="widget-price-filter pt-3">
+                            <h4 class="widget-titlewidget-title">Filter By Price</h4>
+                            <ul class="product-tags sidebar-list list-unstyled">
+                                <li class="tags-item">
+                                    <button value="all" name="price_filter" class="fw-semibold btn btn-link p-0" style="text-decoration: none;color: black">all</button>
+                                </li>
+                                <li class="tags-item">
+                                    <button value="f1" name="price_filter" class="fw-semibold btn btn-link p-0" style="text-decoration: none;color: black">Less than $100</button>
+                                </li>
+                                <li class="tags-item">
+                                    <button value="f2" name="price_filter" class="fw-semibold btn btn-link p-0" style="text-decoration: none;color: black">$100- $200</button>
+                                </li>
+                                <li class="tags-item">
+                                    <button value="f3" name="price_filter" class="fw-semibold btn btn-link p-0" style="text-decoration: none;color: black">$200- $300</button>
+                                </li>
+                                <li class="tags-item">
+                                    <button value="f4" name="price_filter" class="fw-semibold btn btn-link p-0" style="text-decoration: none;color: black">$300- $400</button>
+                                </li>
+                                <li class="tags-item">
+                                    <button value="f5" name="price_filter" class="fw-semibold btn btn-link p-0" style="text-decoration: none;color: black">$400- $500</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

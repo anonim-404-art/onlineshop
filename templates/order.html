@@ -1,0 +1,62 @@
+{% extends "basic_black.html" %}
+{% block content %}
+    <main id="banner">
+        <div class="position-relative"
+             style="background: url('../static/images/banner1.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 60vh;">
+            <div class="container-fluid ">
+                <div class="hero-content text-center position-absolute start-50 top-50 translate-middle">
+                    <h2 class="display-2 text-uppercase text-white mb-0 fw-medium">Order</h2>
+
+                    <nav class="breadcrumb d-flex justify-content-center mt-3 me-1 text-white">
+                        <a class="breadcrumb-item breadcrumb-light text-white" href="{{ url_for("main") }}">Home</a>
+                        <a class="breadcrumb-item breadcrumb-light active text-white" aria-current="page">Order</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+    <section id="order-summary" class="py-5">
+        <div class="container-fluid px-md-5">
+            <div class="row d-flex flex-wrap">
+                <div class="col-lg-6 mx-auto">
+                    <form action="{{ url_for("order_page") }}" method="post" class="card p-4 h-100">
+                        <h2 class="text-dark pb-3">Review Your Order</h2>
+                        <div class="total-price">
+                            <table cellspacing="0" class="table mb-4">
+                                <thead>
+                                    <tr>
+                                        <th class="fw-bold">Total</th>
+                                        <th class="text-end fw-bold">{{ total }}</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <h2 class="text-dark pb-3 mt-4">Additional Information</h2>
+                        <div class="mb-4">
+                            <label for="information" class="form-label">Order notes (optional)</label>
+                            <textarea name="information" id="information" class="form-control" rows="3" placeholder="Notes about your order, like special notes for delivery."></textarea>
+                        </div>
+                        <h2 class="text-dark pb-3">Payment Method</h2>
+                        <div class="list-group mb-3">
+                            <label class="list-group-item d-flex gap-2">
+                                <input class="form-check-input flex-shrink-0" type="radio" name="payment_method" value="cash_on_delivery">
+                                <span>
+                                    <strong class="text-uppercase">Cash on delivery</strong>
+                                    <small class="d-block text-body-secondary">Pay with cash upon delivery.</small>
+                                </span>
+                            </label>
+                            <label class="list-group-item d-flex gap-2">
+                                <input class="form-check-input flex-shrink-0" type="radio" name="payment_method" value="paypal">
+                                <span>
+                                    <strong class="text-uppercase">Paypal</strong>
+                                    <small class="d-block text-body-secondary">Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</small>
+                                </span>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-dark btn-lg rounded-1 w-100">Place an Order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

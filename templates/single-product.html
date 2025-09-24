@@ -1,0 +1,638 @@
+﻿{% extends "basic_black.html" %}
+{% block content %}
+    <main id="banner">
+        <div class="container-fluid padding-medium">
+            <div class="hero-content text-center">
+                <h2 class="display-2 text-uppercase mb-0 fw-medium">Single Product</h2>
+                <nav class="breadcrumb d-flex justify-content-center mt-3 me-1">
+                    <a class="breadcrumb-item" href="{{ url_for("main") }}">Home</a>
+                    <a class="breadcrumb-item active" aria-current="page">Single Product</a>
+                </nav>
+            </div>
+        </div>
+    </main>
+
+    <section id="selling-product">
+        <div class="container-fluid px-md-5">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-md-3 d-none d-md-flex">
+                            <!-- product-thumbnail-slider -->
+                            <div class="swiper product-thumbnail-slider">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide mb-1">
+                                        <img src="{{ product.images }}" alt="" class="thumb-image image_small">
+                                    </div>
+                                    <div class="swiper-slide mb-1">
+                                        <img src="{{ product.back_image }}" alt="" class="thumb-image image_small">
+                                    </div>
+                                    <div class="swiper-slide mb-1">
+                                        <img src="{{ product.side_image }}" alt="" class="thumb-image image_small">
+                                    </div>
+                                    <div class="swiper-slide mb-1">
+                                        <img src="{{ product.bottom_image }}" alt="" class="thumb-image image_small">
+                                    </div>
+                                    <div class="swiper-slide mb-1">
+                                        <img src="{{ product.just_image }}" alt="" class="thumb-image image_small">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / product-thumbnail-slider -->
+                        </div>
+                        <div class="col-md-9">
+                            <!-- product-large-slider -->
+                            <div class="swiper product-large-slider">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img src="{{ product.images }}" alt="product-large" class="image_big">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="{{ product.back_image }}" alt="product-large" class="image_big">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="{{ product.side_image }}" alt="product-large" class="image_big">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="{{ product.bottom_image }}" alt="product-large" class="image_big">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="{{ product.just_image }}" alt="product-large" class="image_big">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / product-large-slider -->
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="product-info">
+                        <div class="element-header">
+                            <h2 itemprop="name" class="display-6 fw-bold">{{ product.name }}</h2>
+                            <div class="rating-container d-flex gap-0 align-items-center">
+                <span class="rating secondary-font ">
+                  <svg class="star text-yellow" width="15" height="15">
+                    <use href="#star"></use>
+                  </svg>
+                  <svg class="star text-yellow" width="15" height="15">
+                    <use href="#star"></use>
+                  </svg>
+                  <svg class="star text-yellow" width="15" height="15">
+                    <use href="#star"></use>
+                  </svg>
+                  <svg class="star text-yellow" width="15" height="15">
+                    <use href="#star"></use>
+                  </svg>
+                  <svg class="star text-yellow" width="15" height="15">
+                    <use href="#star"></use>
+                  </svg>
+                  (5.0) </span>
+                            </div>
+                        </div>
+                        <div class="product-price pt-3 pb-3">
+                            <strong class="text-primary display-6 ">{{ product.price }}</strong>
+                            <del class="ms-2">{{ product.price + (product.price * 0.10) }}</del>
+                        </div>
+                        <p>{{ product.description }}</p>
+                        <div class="cart-wrap">
+                            <div class="color-options product-select">
+                                <div class="color-toggle pt-2" data-option-index="0">
+                                    <h6 class="item-title fw-bold">Color:</h6>
+                                    <ul class="select-list list-unstyled d-flex">
+                                        {% for colors in product.colors %}
+                                            <li class="select-item pe-3" data-val="Gray" title="Gray">
+                                                <a href="#" class="btn btn-light fs-6 ">{{ colors }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="swatch product-select pt-3" data-option-index="1">
+                                <h6 class="item-title fw-bold">Size:</h6>
+                                <ul class="select-list list-unstyled d-flex">
+                                    <li data-value="XL" class="select-item pe-3">
+                                        <a href="#" class="btn btn-light fs-6">XL</a>
+                                    </li>
+                                    <li data-value="L" class="select-item pe-3">
+                                        <a href="#" class="btn btn-light fs-6 active">L</a>
+                                    </li>
+                                    <li data-value="M" class="select-item pe-3">
+                                        <a href="#" class="btn btn-light fs-6">M</a>
+                                    </li>
+                                    <li data-value="S" class="select-item">
+                                        <a href="#" class="btn btn-light fs-6">S</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="product-quantity pt-2">
+                                <div class="stock-number text-dark"><em>2 in stock</em></div>
+                                <div class="stock-button-wrap">
+                                    <div class="d-flex flex-wrap">
+                                        <div class="input-group product-qty align-items-center w-25 me-3">
+                      <span class="input-group-btn">
+                        <button type="button" class="quantity-left-minus border border-white rounded-1 btn-number"
+                                data-type="minus">
+                          <svg width="16" height="16">
+                            <use href
+                                         ="#minus"></use>
+                          </svg>
+                        </button>
+                      </span>
+                                            <input type="text" id="quantity" name="quantity"
+                                                   class="form-control input-number text-center p-2 mx-1" value="1">
+                                            <span class="input-group-btn">
+                        <button type="button" class="quantity-right-plus border border-white rounded-1 btn-number"
+                                data-type="plus" data-field="">
+                          <svg width="16" height="16">
+                            <use href="#plus"></use>
+                          </svg>
+                        </button>
+                      </span>
+                                        </div>
+                                        <a href="{{ url_for("add_cart", product_id=product.id) }}"
+                                           class="btn-cart me-3 px-4 pt-3 pb-3">
+                                            <h5 class="text-capitalize m-0">Add to Cart</h5>
+                                        </a>
+                                        {% if wishlist_item %}
+                                            <a href="{{ url_for("wishlist_delete", product_id=product.id) }}"
+                                               class="btn-wishlist px-4 pt-3 ">
+                                                <svg style="color: red" class="cart" width="25" height="25">
+                                                    <use href="#wishlist"></use>
+                                                </svg>
+                                            </a>
+                                        {% else %}
+                                            <a href="{{ url_for("wishlist_product", product=product.id) }}"
+                                               class="btn-wishlist px-4 pt-3 ">
+                                                <svg class="cart" width="25" height="25">
+                                                    <use href="#wishlist"></use>
+                                                </svg>
+                                            </a>
+                                        {% endif %}
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="meta-product pt-4">
+                            <div class="meta-item d-flex align-items-baseline">
+                                <h6 class="item-title fw-bold no-margin pe-2">SKU:</h6>
+                                <ul class="select-list list-unstyled d-flex">
+                                    <li data-value="S" class="select-item">1223</li>
+                                </ul>
+                            </div>
+                            <div class="meta-item d-flex align-items-baseline">
+                                <h6 class="item-title fw-bold no-margin pe-2">Category:</h6>
+                                <ul class="select-list list-unstyled d-flex">
+                                    <li data-value="S" class="select-item">
+                                        <a href="#">Black</a>,
+                                    </li>
+                                    <li data-value="S" class="select-item">
+                                        <a href="#">Sunglasses</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="meta-item d-flex align-items-baseline">
+                                <h6 class="item-title fw-bold no-margin pe-2">Tags:</h6>
+                                <ul class="select-list list-unstyled d-flex">
+                                    <li data-value="S" class="select-item">
+                                        <a href="#">Eyewear</a>,
+                                    </li>
+                                    <li data-value="S" class="select-item">
+                                        <a href="#">Metal</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-tabs">
+        <div class="container-fluid px-md-5 mt-5">
+            <div class="row">
+                <div class="offset-md-1 col-md-10 tabs-listing">
+                    <nav>
+                        <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+                            <button class="nav-link active fw-semibold text-uppercase px-5 py-3 mx-3" id="nav-home-tab"
+                                    data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab"
+                                    aria-controls="nav-home" aria-selected="true">Details
+                            </button>
+                            <button class="nav-link fw-semibold text-uppercase px-5 py-3 mx-3" id="nav-information-tab"
+                                    data-bs-toggle="tab" data-bs-target="#nav-information" type="button" role="tab"
+                                    aria-controls="nav-information" aria-selected="false" tabindex="-1">How To Use
+                            </button>
+                            <button class="nav-link fw-semibold text-uppercase px-5 py-3 mx-3" id="nav-shipping-tab"
+                                    data-bs-toggle="tab" data-bs-target="#nav-shipping" type="button" role="tab"
+                                    aria-controls="nav-shipping" aria-selected="false" tabindex="-1">Shipping &amp;
+                                Return
+                            </button>
+                            <button class="nav-link fw-semibold text-uppercase px-5 py-3 mx-3" id="nav-review-tab"
+                                    data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab"
+                                    aria-controls="nav-review" aria-selected="false" tabindex="-1">Reviews
+                            </button>
+                        </div>
+                    </nav>
+                    <div class="tab-content pt-5" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                             aria-labelledby="nav-home-tab">
+                            <h5>Product Description</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat
+                                mattis eros.
+                                Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere
+                                a, pede. Donec
+                                nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean
+                                dignissim
+                                pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec
+                                consectetuer ligula
+                                vulputate sem tristique cursus.
+                            </p>
+                            <ul>
+                                <li>Donec nec justo eget felis facilisis fermentum.</li>
+                                <li>Suspendisse urna viverra non, semper suscipit pede.</li>
+                                <li>Aliquam porttitor mauris sit amet orci.</li>
+                            </ul>
+                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat
+                            mattis
+                            eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit,
+                            posuere a, pede.
+                            Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci.
+                            Aenean dignissim
+                            pellentesque felis. Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer
+                            ligula
+                            vulputate sem tristique cursus. <p></p>
+                        </div>
+                        <div class="tab-pane fade" id="nav-information" role="tabpanel"
+                             aria-labelledby="nav-information-tab">
+                            <h5>Best ways to use</h5>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                nulla
+                                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                deserunt mollit
+                                anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu
+                                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                                officia
+                                deserunt mollit anim id est laborum.</p>
+                        </div>
+                        <div class="tab-pane fade" id="nav-shipping" role="tabpanel" aria-labelledby="nav-shipping-tab">
+                            <h5>Returns Policy</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eros justo, accumsan non
+                                dui sit amet.
+                                Phasellus semper volutpat mi sed imperdiet. Ut odio lectus, vulputate non ex non, mattis
+                                sollicitudin
+                                purus. Mauris consequat justo a enim interdum, in consequat dolor accumsan. Nulla
+                                iaculis diam purus,
+                                ut vehicula leo efficitur at.</p>
+                            <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. In blandit nunc enim, sit
+                                amet pharetra
+                                erat aliquet ac.</p>
+                            <h5>Shipping</h5>
+                            <p>Pellentesque ultrices ut sem sit amet lacinia. Sed nisi dui, ultrices ut turpis pulvinar.
+                                Sed
+                                fringilla ex eget lorem consectetur, consectetur blandit lacus varius. Duis vel
+                                scelerisque elit, et
+                                vestibulum metus. Integer sit amet tincidunt tortor. Ut lacinia ullamcorper massa, a
+                                fermentum arcu
+                                vehicula ut. Ut efficitur faucibus dui Nullam tristique dolor eget turpis consequat
+                                varius. Quisque a
+                                interdum augue. Nam ut nibh mauris.</p>
+                        </div>
+                        <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab">
+                            <div class="review-box d-flex flex-wrap">
+                                <div class="col-lg-6 d-flex flex-wrap gap-3">
+                                    <div class="col-md-2">
+                                        <div class="image-holder">
+                                            <img src="../static/images/reviewer-1.jpg" alt="review"
+                                                 class="img-fluid rounded-circle">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="review-content">
+                      <span class="rating secondary-font">
+                        <svg class="star text-yellow" width="15" height="15">
+                          <use href="#star"></use>
+                        </svg>
+                        <svg class="star text-yellow" width="15" height="15">
+                          <use href="#star"></use>
+                        </svg>
+                        <svg class="star text-yellow" width="15" height="15">
+                          <use href="#star"></use>
+                        </svg>
+                        <svg class="star text-yellow" width="15" height="15">
+                          <use href="#star"></use>
+                        </svg>
+                        <svg class="star text-yellow" width="15" height="15">
+                          <use href="#star"></use>
+                        </svg>
+                        (4.5)</span>
+                                            <div class="review-header">
+                                                <span class="author-name text-black fw-bold">Mark Johnson</span>
+                                                <span class="review-date">– 03/07/2024</span>
+                                            </div>
+                                            <p>Vitae tortor condimentum lacinia quis vel eros donec ac. Nam at lectus
+                                                urna duis convallis
+                                                convallis</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 d-flex flex-wrap gap-3">
+                                    <div class="col-md-2">
+                                        <div class="image-holder">
+                                            <img src="../static/images/reviewer-2.jpg" alt="review"
+                                                 class="img-fluid rounded-circle">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="review-content">
+                                            <div class="rating-container d-flex align-items-center">
+                        <span class="rating secondary-font">
+                          <svg class="star text-yellow" width="15" height="15">
+                            <use href="#star"></use>
+                          </svg>
+                          <svg class="star text-yellow" width="15" height="15">
+                            <use href="#star"></use>
+                          </svg>
+                          <svg class="star text-yellow" width="15" height="15">
+                            <use href="#star"></use>
+                          </svg>
+                          <svg class="star text-yellow" width="15" height="15">
+                            <use href="#star"></use>
+                          </svg>
+                          <svg class="star text-yellow" width="15" height="15">
+                            <use href="#star"></use>
+                          </svg>
+                          (3.5)</span>
+                                            </div>
+
+                                            <div class="review-header">
+                                                <span class="author-name text-black fw-bold">Jenny Willis</span>
+                                                <span class="review-date">– 03/06/2022</span>
+                                            </div>
+                                            <p>Vitae tortor condimentum lacinia quis vel eros donec ac. Nam at lectus
+                                                urna duis convallis
+                                                convallis</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="add-review mt-5">
+                                <h5>Add a review</h5>
+                                <p>Your email address will not be published. Required fields are marked *</p>
+                                <form id="form" class="form-group">
+
+                                    <div class="pb-3">
+                                        <div class="review-rating">
+                                            <span>Your rating *</span>
+                                            <div class="rating-container d-flex align-items-center">
+                        <span class="rating secondary-font">
+                          <svg class="star text-yellow" width="15" height="15">
+                            <use href="#star"></use>
+                          </svg>
+                          <svg class="star text-yellow" width="15" height="15">
+                            <use href="#star"></use>
+                          </svg>
+                          <svg class="star text-yellow" width="15" height="15">
+                            <use href="#star"></use>
+                          </svg>
+                          <svg class="star text-yellow" width="15" height="15">
+                            <use href="#star"></use>
+                          </svg>
+
+                          <svg class="star text-yellow" width="15" height="15">
+                            <use href="#star"></use>
+                          </svg>
+                          (5.0)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pb-3">
+                                        <input type="file" class="form-control" data-text="Choose your file">
+                                    </div>
+                                    <div class="pb-3">
+                                        <label>Your Name</label>
+                                        <input type="text" name="name" placeholder="Write your name here*"
+                                               class="form-control">
+                                    </div>
+                                    <div class="pb-3">
+                                        <label>Your Email</label>
+                                        <input type="text" name="email" placeholder="Write your email here*"
+                                               class="form-control">
+                                    </div>
+                                    <div class="pb-3">
+                                        <label>Your Review</label>
+                                        <textarea class="form-control" placeholder="Write your review here*"></textarea>
+                                    </div>
+                                    <div class="pb-3">
+                                        <label>
+                                            <input type="checkbox" required="">
+                                            <span class="label-body">Save my name, email, and website in this browser for the next
+                        time.</span>
+                                        </label>
+                                    </div>
+                                    <button type="submit" name="submit" class="btn btn-dark rounded-0  px-5 py-3 mt-2 ">
+                                        Submit
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="new-arrivals" class="position-relative padding-medium">
+        <div class="container-fluid px-md-5 ">
+            <div class="d-block d-md-flex justify-content-between align-items-center mb-4">
+                <h3 class="display-5 fw-medium ">NEW ARRIVAL ITEMS</h3>
+                <div><a href="#" class="btn btn-dark">SHOP ALL</a></div>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="product-item position-relative">
+                            <img src="../static/images/item8.jpg" alt="new1" class="img-fluid">
+                            <div class="cart-concern">
+                                <div class="cart-button d-flex justify-content-between align-items-center px-4">
+                                    <a href="#" class="btn-wrap d-flex align-items-center text-capitalize fs-6">add
+                                        to cart
+                                        <svg class="arrow" width="20" height="20">
+                                            <use href="#arrow-right"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="view-btn">
+                                        <svg class="expand" width="16" height="16">
+                                            <use href="#expand"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="wishlist-btn">
+                                        <svg class="wishlist" width="20" height="20">
+                                            <use href="#wishlist"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5><a href="#" class="item-name">Product One</a></h5>
+                                <h5 class="money fw-bold ">$22.00</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="product-item position-relative">
+                            <img src="../static/images/item4.jpg" alt="new1" class="img-fluid">
+                            <div class="cart-concern">
+                                <div class="cart-button d-flex justify-content-between align-items-center px-4">
+                                    <a href="#" class="btn-wrap d-flex align-items-center text-capitalize fs-6">add
+                                        to cart
+                                        <svg class="arrow" width="20" height="20">
+                                            <use href="#arrow-right"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="view-btn">
+                                        <svg class="expand" width="16" height="16">
+                                            <use href="#expand"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="wishlist-btn">
+                                        <svg class="wishlist" width="20" height="20">
+                                            <use href="#wishlist"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5><a href="" class="item-name">Product Two</a></h5>
+                                <h5 class="money fw-bold ">$22.00</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="product-item position-relative">
+                            <img src="../static/images/item3.jpg" alt="new1" class="img-fluid">
+                            <div class="cart-concern">
+                                <div class="cart-button d-flex justify-content-between align-items-center px-4">
+                                    <a href="#" class="btn-wrap d-flex align-items-center text-capitalize fs-6">add
+                                        to cart
+                                        <svg class="arrow" width="20" height="20">
+                                            <use href="#arrow-right"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="view-btn">
+                                        <svg class="expand" width="16" height="16">
+                                            <use href="#expand"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="wishlist-btn">
+                                        <svg class="wishlist" width="20" height="20">
+                                            <use href="#wishlist"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5><a href="#" class="item-name">Product three</a></h5>
+                                <h5 class="money fw-bold ">$22.00</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="product-item position-relative">
+                            <img src="../static/images/item6.jpg" alt="new1" class="img-fluid">
+                            <div class="cart-concern">
+                                <div class="cart-button d-flex justify-content-between align-items-center px-4">
+                                    <a href="#" class="btn-wrap d-flex align-items-center text-capitalize fs-6">add
+                                        to cart
+                                        <svg class="arrow" width="20" height="20">
+                                            <use href="#arrow-right"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="view-btn">
+                                        <svg class="expand" width="16" height="16">
+                                            <use href="#expand"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="wishlist-btn">
+                                        <svg class="wishlist" width="20" height="20">
+                                            <use href="#wishlist"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5><a href="#" class="item-name">Product four</a></h5>
+                                <h5 class="money fw-bold ">$22.00</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="product-item position-relative">
+                            <img src="../static/images/item5.jpg" alt="new1" class="img-fluid">
+                            <div class="cart-concern">
+                                <div class="cart-button d-flex justify-content-between align-items-center px-4">
+                                    <a href="#" class="btn-wrap d-flex align-items-center text-capitalize fs-6">add
+                                        to cart
+                                        <svg class="arrow" width="20" height="20">
+                                            <use href="#arrow-right"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="view-btn">
+                                        <svg class="expand" width="16" height="16">
+                                            <use href="#expand"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="wishlist-btn">
+                                        <svg class="wishlist" width="20" height="20">
+                                            <use href="#wishlist"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5><a href="#" class="item-name">Product five</a></h5>
+                                <h5 class="money fw-bold ">$22.00</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="product-item position-relative">
+                            <img src="../static/images/item2.jpg" alt="new1" class="img-fluid">
+                            <div class="cart-concern">
+                                <div class="cart-button d-flex justify-content-between align-items-center px-4">
+                                    <a href="#" class="btn-wrap d-flex align-items-center text-capitalize fs-6">add
+                                        to cart
+                                        <svg class="arrow" width="20" height="20">
+                                            <use href="#arrow-right"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="view-btn">
+                                        <svg class="expand" width="16" height="16">
+                                            <use href="#expand"></use>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="wishlist-btn">
+                                        <svg class="wishlist" width="20" height="20">
+                                            <use href="#wishlist"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5><a href="#" class="item-name">Product six</a></h5>
+                                <h5 class="money fw-bold ">$22.00</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination new-arrival-pagination position-relative d-block d-lg-none mt-4"></div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+<!-- svg icon -->

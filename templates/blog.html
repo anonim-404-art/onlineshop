@@ -1,0 +1,190 @@
+﻿{% extends "basic.html" %}
+{% block content %}
+  <main id="banner">
+    <div class="position-relative" style="background: url('../static/images/banner1.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 60vh;">
+      <div class="container-fluid ">
+        <div class="hero-content text-center position-absolute start-50 top-50 translate-middle">
+          <h2 class="display-2 text-uppercase text-white mb-0 fw-medium">Blog</h2>
+
+          <nav class="breadcrumb d-flex justify-content-center mt-3 me-1 text-white">
+            <a class="breadcrumb-item breadcrumb-light text-white" href="{{ url_for("main") }}">Home</a>
+            <a class="breadcrumb-item breadcrumb-light active text-white" aria-current="page">Blog</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section id="blog">
+    <div class="container-fluid px-md-5 padding-medium">
+      <div class="row ">
+        <div class="col-md-4 my-4">
+          <div class="z-1 position-absolute m-2 px-3 pt-1">
+            <h2 class="text-white display-4 m-0">20<span class="fs-4">FEB</span> </h2>
+          </div>
+          <div class="card position-relative ">
+            <a href="{{ url_for("single_post") }}"><img src="../static/images/article4.jpg" class="img-fluid" alt="image"></a>
+            <div class="card-body p-0">
+              <a href="{{ url_for("single_post") }}">
+                <h3 class="card-title pt-4 pb-3 m-0">10 new fashion style for this summer</h3>
+              </a>
+
+              <div class="card-text">
+                <p class="blog-paragraph fs-6">At the core of our practice is the idea that cities are
+                  the incubators of
+                  our greatest
+                  achievements, and the best hope for a sustainable future. This is the best way to
+                  style the product in
+                  your own wat.</p>
+                <a href="{{ url_for("single_post") }}" class="blog-read">read more</a>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 my-4">
+          <div class="z-1 position-absolute m-2 px-3 pt-1">
+            <h2 class="text-white display-4 m-0">21<span class="fs-4">FEB</span> </h2>
+
+          </div>
+          <div class="card position-relative ">
+            <a href="{{ url_for("single_post") }}"><img src="../static/images/article5.jpg" class="img-fluid" alt="image"></a>
+            <div class="card-body p-0">
+              <a href="{{ url_for("single_post") }}">
+                <h3 class="card-title pt-4 pb-3 m-0">How to get good look in budget</h3>
+              </a>
+
+              <div class="card-text">
+                <p class="blog-paragraph fs-6">At the core of our practice is the idea that cities are
+                  the incubators of
+                  our greatest
+                  achievements, and the best hope for a sustainable future. This is the best way to
+                  style the product in
+                  your own wat.</p>
+                <a href="{{ url_for("single_post") }}" class="blog-read">read more</a>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 my-4">
+          <div class="z-1 position-absolute m-2 px-3 pt-1">
+            <h2 class="text-white display-4 m-0">22<span class="fs-4">FEB</span> </h2>
+
+          </div>
+          <div class="card position-relative">
+            <a href="{{ url_for("single_post") }}"><img src="../static/images/article6.jpg" class="img-fluid" alt="image"></a>
+            <div class="card-body p-0">
+              <a href="{{ url_for("single_post") }}">
+                <h3 class="card-title pt-4 pb-3 m-0">Best Styling tips from experts</h3>
+              </a>
+
+              <div class="card-text">
+                <p class="blog-paragraph fs-6">At the core of our practice is the idea that cities are
+                  the incubators of
+                  our greatest
+                  achievements, and the best hope for a sustainable future. This is the best way to
+                  style the product in
+                  your own wat.</p>
+                <a href="{{ url_for("single_post") }}" class="blog-read">read more</a>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 my-4">
+          <div class="z-1 position-absolute m-2 px-3 pt-1">
+            <h2 class="text-white display-4 m-0">20<span class="fs-4">FEB</span> </h2>
+          </div>
+          <div class="card position-relative ">
+            <a href="{{ url_for("single_post") }}"><img src="../static/images/article1.jpg" class="img-fluid" alt="image"></a>
+            <div class="card-body p-0">
+              <a href="{{ url_for("single_post") }}">
+                <h3 class="card-title pt-4 pb-3 m-0">10 new fashion style for this summer</h3>
+              </a>
+
+              <div class="card-text">
+                <p class="blog-paragraph fs-6">At the core of our practice is the idea that cities are
+                  the incubators of
+                  our greatest
+                  achievements, and the best hope for a sustainable future. This is the best way to
+                  style the product in
+                  your own wat.</p>
+                <a href="{{ url_for("single_post") }}" class="blog-read">read more</a>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 my-4">
+          <div class="z-1 position-absolute m-2 px-3 pt-1">
+            <h2 class="text-white display-4 m-0">21<span class="fs-4">FEB</span> </h2>
+
+          </div>
+          <div class="card position-relative ">
+            <a href="{{ url_for("single_post") }}"><img src="../static/images/article2.jpg" class="img-fluid" alt="image"></a>
+            <div class="card-body p-0">
+              <a href="{{ url_for("single_post") }}">
+                <h3 class="card-title pt-4 pb-3 m-0">How to get good look in budget</h3>
+              </a>
+
+              <div class="card-text">
+                <p class="blog-paragraph fs-6">At the core of our practice is the idea that cities are
+                  the incubators of
+                  our greatest
+                  achievements, and the best hope for a sustainable future. This is the best way to
+                  style the product in
+                  your own wat.</p>
+                <a href="{{ url_for("single_post") }}" class="blog-read">read more</a>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 my-4">
+          <div class="z-1 position-absolute m-2 px-3 pt-1">
+            <h2 class="text-white display-4 m-0">22<span class="fs-4">FEB</span> </h2>
+
+          </div>
+          <div class="card position-relative">
+            <a href="{{ url_for("single_post") }}"><img src="../static/images/article3.jpg" class="img-fluid" alt="image"></a>
+            <div class="card-body p-0">
+              <a href="{{ url_for("single_post") }}">
+                <h3 class="card-title pt-4 pb-3 m-0">Best Styling tips from experts</h3>
+              </a>
+
+              <div class="card-text">
+                <p class="blog-paragraph fs-6">At the core of our practice is the idea that cities are
+                  the incubators of
+                  our greatest
+                  achievements, and the best hope for a sustainable future. This is the best way to
+                  style the product in
+                  your own wat.</p>
+                <a href="{{ url_for("single_post") }}" class="blog-read">read more</a>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <nav class="navigation paging-navigation text-center mt-5" role="navigation">
+        <div class="pagination loop-pagination d-flex justify-content-center align-items-center">
+          <a href="" class="btn btn-light rounded d-none d-lg-flex me-2">previous</a>
+          <span aria-current="page" class="page-numbers fs-4 mx-3 current">1</span>
+          <a class="page-numbers fs-4 mx-3" href="#">2</a>
+          <a class="page-numbers fs-4 mx-3" href="#">3</a>
+          <a href="" class="btn btn-dark rounded d-none d-lg-flex ms-2">next</a>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+{% endblock %}

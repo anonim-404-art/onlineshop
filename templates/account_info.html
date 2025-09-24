@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GadgetHub</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="templatesjungle">
+    <meta name="keywords" content="electronics gadget">
+    <meta name="description" content="electronics gadget website template">
+
+    <!--Bootstrap ================================================== -->
+    <link href="../static/npm/bootstrap%405.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!--Link Swiper's CSS ================================================== -->
+    <link rel="stylesheet" href="../static/npm/swiper%409/swiper-bundle.min.css">
+
+    <!-- Style Sheet ================================================== -->
+    <link rel="stylesheet" href="../static/css/styles.css">
+
+    <!-- Google Fonts ================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="../static/css/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="star" viewbox="0 0 24 24">
+        <path fill="currentColor"
+              d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"></path>
+    </symbol>
+    <symbol id="minus" viewbox="0 0 24 24">
+        <path fill="currentColor" d="M19 12.998H5v-2h14z"></path>
+    </symbol>
+    <symbol id="plus" viewbox="0 0 24 24">
+        <path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z"></path>
+    </symbol>
+    <symbol id="arrow-left" viewbox="0 0 256 256">
+        <path fill="currentColor"
+              d="M220 128a4 4 0 0 1-4 4H49.66l65.17 65.17a4 4 0 0 1-5.66 5.66l-72-72a4 4 0 0 1 0-5.66l72-72a4 4 0 0 1 5.66 5.66L49.66 124H216a4 4 0 0 1 4 4"></path>
+    </symbol>
+    <symbol id="arrow-right" viewbox="0 0 256 256">
+        <path fill="currentColor"
+              d="m218.83 130.83l-72 72a4 4 0 0 1-5.66-5.66L206.34 132H40a4 4 0 0 1 0-8h166.34l-65.17-65.17a4 4 0 0 1 5.66-5.66l72 72a4 4 0 0 1 0 5.66"></path>
+    </symbol>
+    <symbol id="man" viewbox="0 0 512 512">
+        <path fill="currentColor"
+              d="M332.64 64.58C313.18 43.57 286 32 256 32c-30.16 0-57.43 11.5-76.8 32.38c-19.58 21.11-29.12 49.8-26.88 80.78C156.76 206.28 203.27 256 256 256s99.16-49.71 103.67-110.82c2.27-30.7-7.33-59.33-27.03-80.6M432 480H80a31 31 0 0 1-24.2-11.13c-6.5-7.77-9.12-18.38-7.18-29.11C57.06 392.94 83.4 353.61 124.8 326c36.78-24.51 83.37-38 131.2-38s94.42 13.5 131.2 38c41.4 27.6 67.74 66.93 76.18 113.75c1.94 10.73-.68 21.34-7.18 29.11A31 31 0 0 1 432 480"></path>
+    </symbol>
+    <symbol id="search" viewbox="0 0 512 512">
+        <path fill="currentColor"
+              d="M456.69 421.39L362.6 327.3a173.8 173.8 0 0 0 34.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.8 173.8 0 0 0 327.3 362.6l94.09 94.09a25 25 0 0 0 35.3-35.3M97.92 222.72a124.8 124.8 0 1 1 124.8 124.8a124.95 124.95 0 0 1-124.8-124.8"></path>
+    </symbol>
+    <symbol id="expand" viewbox="0 0 32 32">
+        <path fill="currentColor"
+              d="m25.545 23.328l-7.627-7.705l7.616-7.616l1.857 1.857l2.26-8.428l-8.428 2.258l1.836 1.836l-7.603 7.604l-7.513-7.59L9.81 3.695L1.392 1.394l2.215 8.44l1.848-1.83l7.524 7.604l-7.515 7.515l-1.856-1.855l-2.26 8.427l8.43-2.257L7.94 25.6l7.503-7.502l7.614 7.693l-1.867 1.848l8.416 2.3l-2.213-8.438z"></path>
+    </symbol>
+    <symbol id="wishlist" viewbox="0 0 512 512">
+        <path fill="currentColor"
+              d="M256 448a32 32 0 0 1-18-5.57c-78.59-53.35-112.62-89.93-131.39-112.8c-40-48.75-59.15-98.8-58.61-153C48.63 114.52 98.46 64 159.08 64c44.08 0 74.61 24.83 92.39 45.51a6 6 0 0 0 9.06 0C278.31 88.81 308.84 64 352.92 64c60.62 0 110.45 50.52 111.08 112.64c.54 54.21-18.63 104.26-58.61 153c-18.77 22.87-52.8 59.45-131.39 112.8a32 32 0 0 1-18 5.56"></path>
+    </symbol>
+    <symbol id="cart" viewbox="0 0 512 512">
+        <circle cx="176" cy="416" r="32" fill="currentColor"></circle>
+        <circle cx="400" cy="416" r="32" fill="currentColor"></circle>
+        <path fill="currentColor"
+              d="M456.8 120.78a23.92 23.92 0 0 0-18.56-8.78H133.89l-6.13-34.78A16 16 0 0 0 112 64H48a16 16 0 0 0 0 32h50.58l45.66 258.78A16 16 0 0 0 160 368h256a16 16 0 0 0 0-32H173.42l-5.64-32h241.66A24.07 24.07 0 0 0 433 284.71l28.8-144a24 24 0 0 0-5-19.93"></path>
+    </symbol>
+    <symbol id="play" viewbox="0 0 512 512">
+        <path fill="currentColor" d="m96 448l320-192L96 64z"></path>
+    </symbol>
+    <symbol id="down" viewbox="0 0 24 24">
+        <g fill="none" fill-rule="evenodd">
+            <path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"></path>
+            <path fill="currentColor"
+                  d="M13.06 16.06a1.5 1.5 0 0 1-2.12 0l-5.658-5.656a1.5 1.5 0 1 1 2.122-2.121L12 12.879l4.596-4.596a1.5 1.5 0 0 1 2.122 2.12l-5.657 5.658Z"></path>
+        </g>
+    </symbol>
+    <symbol id="navbar-icon" viewbox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 17h18M3 12h18M3 7h18"></path>
+    </symbol>
+</svg>
+
+<div class="search-popup">
+    <div class="search-popup-container">
+
+        <form role="search" method="get" class="form-group" action="">
+            <input type="search" id="search-form" class="form-control border-0 border-bottom"
+                   placeholder="Type and press enter" value="" name="s">
+            <button type="submit" class="search-submit border-0 position-absolute bg-white"
+                    style="top: 15px;right: 15px;">
+                <svg class="search" width="24" height="24">
+                    <use href="#search"></use>
+                </svg>
+            </button>
+        </form>
+
+        <h5 class="cat-list-title">Browse Categories</h5>
+
+        <ul class="cat-list">
+            <li class="cat-list-item mb-3">
+                <a href="#" title="Product-1">Product-1</a>
+            </li>
+            <li class="cat-list-item mb-3">
+                <a href="#" title="Product-2">Product-2</a>
+            </li>
+            <li class="cat-list-item mb-3">
+                <a href="#" title="Product-3">Product-3</a>
+            </li>
+            <li class="cat-list-item mb-3">
+                <a href="#" title="Product-4">Product-4</a>
+            </li>
+            <li class="cat-list-item mb-3">
+                <a href="#" title="Product-5">Product-5</a>
+            </li>
+            <li class="cat-list-item mb-3">
+                <a href="#" title="Product-6">Product-6</a>
+            </li>
+            <li class="cat-list-item mb-3">
+                <a href="#" title="Product-7">Product-7</a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
+    <div class="offcanvas-header justify-content-center">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="order-md-last">
+            <h4 class="d-flex justify-content-between align-items-center mb-4">
+                <span class="text-primary">Your cart</span>
+                <span class="badge bg-primary rounded-circle pt-2">3</span>
+            </h4>
+
+            <ul class="list-group mb-4">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">Product one</h6>
+                        <small class="text-body-secondary">Brief description</small>
+                    </div>
+                    <span class="text-body-secondary">$120</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">Product Two</h6>
+                        <small class="text-body-secondary">Brief description</small>
+                    </div>
+                    <span class="text-body-secondary">$80</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div>
+                        <h6 class="my-0">Product three</h6>
+                        <small class="text-body-secondary">Brief description</small>
+                    </div>
+                    <span class="text-body-secondary">$50</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span class="fw-bold">Total (USD)</span>
+                    <strong>$250</strong>
+                </li>
+            </ul>
+
+            <button class="w-100 btn btn-dark" type="submit">Continue to checkout</button>
+        </div>
+    </div>
+</div>
+
+<!-- header section start  -->
+<header id="header" class="site-header py-3 px-3 px-lg-5 bg-black w-100 z-1">
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg">
+                <button class="navbar-toggler d-flex d-lg-none order-3 p-0 border-0 shadow-none" type="button"
+                        data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <svg class="navbar-icon text-white" width="30" height="30">
+                        <use href="#navbar-icon"></use>
+                    </svg>
+                </button>
+                <a href="{{ url_for("main") }}" class="navbar-brand order-2 order-lg-2 d-flex d-lg-none">
+                    <img src="../static/images/logo.png" alt="Logo">
+                </a>
+                <div class="offcanvas offcanvas-end bg-black order-3" tabindex="-1" id="bdNavbar"
+                     aria-labelledby="bdNavbarOffcanvasLabel">
+                    <div class="offcanvas-body align-items-center">
+                        <div class="offcanvas-header p-0 py-4 ms-2">
+                            <button type="button" class="btn-close btn-close-white shadow-none"
+                                    data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+                        </div>
+                        <div class="col-md-2 d-flex">
+                            <a href="{{ url_for("main") }}" class="navbar-brand order-2 order-lg-2 d-none d-lg-flex">
+                                <img src="../static/images/logo.png" alt="Logo">
+                            </a>
+                        </div>
+                        <div class="col-md-5 offset-lg-2">
+                            <div class="navbar-collapse order-1 order-lg-1 ms-3 ms-lg-0" id="navbarMenu">
+                                <ul class="navbar-nav d-flex justify-content-center">
+                                    <li class="nav-item me-5">
+                                        <a class="nav-link nav-link-ltr text-white pb-1 pe-0"
+                                           href="{{ url_for("main") }}">Home</a>
+                                    </li>
+                                    <li class="nav-item me-5">
+                                        <a class="nav-link nav-link-ltr text-white pb-1 pe-0"
+                                           href="{{ url_for("about") }}">About</a>
+                                    </li>
+
+                                    <!-- Dropdown for Shop -->
+                                    <li class="nav-item me-5 dropdown">
+                                        <a class="nav-link nav-link-ltr text-white pb-1 pe-0"
+                                           href="{{ url_for("shop") }}">
+                                            Shop
+                                        </a>
+                                    </li>
+
+                                    <!-- Dropdown for Blog -->
+                                    <li class="nav-item me-5 dropdown">
+                                        <a class="nav-link nav-link-ltr text-white pb-1 pe-0"
+                                           href="{{ url_for("blog") }}">
+                                            Blog
+                                        </a>
+                                    </li>
+                                    {% if user.role == "seller" %}
+                                        <li class="nav-item me-5 dropdown">
+                                            <a class="nav-link nav-link-ltr text-white pb-1 pe-0"
+                                               href="{{ url_for("product") }}">
+                                                Product
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if user.role == "admin" %}
+                                        <li class="nav-item me-5 dropdown">
+                                            <a class="nav-link nav-link-ltr text-white pb-1 pe-0"
+                                               href="{{ url_for("admin") }}">
+                                                Admin
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                    <!-- Dropdown for Pages -->
+                                    <li class="nav-item me-5 dropdown">
+                                        <a class="nav-link nav-link-ltr text-white pb-1 pe-0"
+                                           href="{{ url_for("faqs") }}">
+                                            Pages
+                                        </a>
+                                    </li>
+                                    {% if user %}
+                                        <li class="nav-item mt-4 mt-lg-0">
+                                            <a class="fw-bold text-decoration-underline nav-link text-white pb-1 pe-0"
+                                               href="{{ url_for("account_info") }}">{{ user.name }}</a>
+                                        </li>
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <ul class="user-items list-unstyled d-none d-lg-flex justify-content-end align-items-center order-3 flex-grow-1 gap-4 m-0">
+                                <li class="search-item" data-bs-toggle="collapse" data-bs-target="#search-box"
+                                    aria-controls="search-box" aria-expanded="false" aria-label="Toggle navigation">
+                                    <a href="#" class="search-button">
+                                        <svg class="text-white search" width="20" height="20">
+                                            <use href="#search"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url_for("cart") }}" data-bs-toggle="offcanvas"
+                                       data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                                        <svg class="text-white cart" width="20" height="20">
+                                            <use href="#cart"></use>
+                                        </svg>
+                                    </a>
+                                <li>
+                                    <a href="{{ url_for("wishlist") }}" data-bs-toggle="offcanvas"
+                                       data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                                        <svg class="text-white wishlist" width="20" height="20">
+                                            <use href="#wishlist"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="
+
+
+
+
+
+                                            {% if user %}{{ url_for('account_info') }}{% else %}{{ url_for('account') }}{% endif %}">
+                                        <svg class="text-white man" width="20" height="20">
+                                            <use href="#man"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+<!-- Main content -->
+<main class="container my-5">
+    <h2 class="mb-4">My Account</h2>
+
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 mb-4">
+            <div class="list-group">
+                <a href="#profile" class="list-group-item list-group-item-action index active">Profile Info</a>
+                <a href="#orders" class="list-group-item list-group-item-action index">Order History</a>
+                {% if data_check %}
+                    <a href="#addresses" class="list-group-item list-group-item-action index">Saved Addresses</a>
+                {% endif %}
+
+                <a href="#settings" class="list-group-item list-group-item-action index">Account Settings</a>
+                <a href="{{ url_for("logout") }}" class="list-group-item list-group-item-action text-danger">Logout</a>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="col-md-9">
+            <div class="item work" id="profile">
+                <h4>Profile Information</h4>
+                <p><strong>Name:</strong>{{ user.name }}</p>
+                <p><strong>Surname:</strong>{{ user.surname }}</p>
+
+                <p><strong>Email:</strong>{{ user.email }}</p>
+                {% if data_check %}
+                    {% if not user.role %}
+                        <p>Want to open business account?<strong> <a href="{{ url_for("admin_request") }}">click
+                            here</a></strong></p>
+                    {% endif %}
+
+                {% endif %}
+
+
+            </div>
+            <div class="item" id="orders">
+                <h4>Order History</h4>
+                {% if orders %}
+                    <ul class="list-group">
+                        {% for order in orders %}
+                            <li class="list-group-item" onclick="toggleOrderDetails('order-{{ order.id }}')"
+                                style="cursor: pointer;">
+                                <strong>
+                                    Order #{{ order.id }}
+                                </strong>
+                                <ul style="display: none; margin-top: 10px;">
+                                    {% for product in products[order.id] %}
+                                        <li>
+                                            {{ product.name }} – ${{ product.price }}
+                                            <br><small>{{ product.description }}</small>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No orders yet.</p>
+                {% endif %}
+            </div>
+            <script>
+                function toggleOrderDetails(id) {
+                    const el = document.getElementById(id);
+                    el.style.display = (el.style.display === "none" || el.style.display === "")
+                        ? "block"
+                        : "none";
+                }
+            </script>
+
+            {% if data_check %}
+                <div class="item card shadow-sm border-0 rounded-3 p-4" id="addresses">
+                    <h4 class="mb-3">Saved Address</h4>
+                    <div class="table-responsive">
+                        <table class="table table-striped align-middle">
+                            <tbody>
+                            <tr>
+                                <th scope="row" class="text-muted">Name</th>
+                                <td>{{ user.name }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-muted">Surname</th>
+                                <td>{{ data_check.surname }}</td>
+                            </tr>
+                            {% if data_check.company_name %}
+                                <tr>
+                                    <th scope="row" class="text-muted">Company</th>
+                                    <td>{{ data_check.company_name }}</td>
+                                </tr>
+                            {% endif %}
+                            <tr>
+                                <th scope="row" class="text-muted">Address Line 1</th>
+                                <td>{{ data_check.street_address_1 }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-muted">Address Line 2</th>
+                                <td>{{ data_check.street_address_2 }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-muted">Town</th>
+                                <td>{{ data_check.town }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-muted">State</th>
+                                <td>{{ data_check.state }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-muted">Zip Code</th>
+                                <td>{{ data_check.zip_code }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-muted">Phone</th>
+                                <td>{{ data_check.number }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-muted">Additional Info</th>
+                                <td>{{ data_check.information }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="item" id="settings">
+                <h4>Account Settings</h4>
+                <a href="#" id="change-password-btn" class="btn btn-outline-primary btn-sm">Change Password</a>
+                <div id="change-password-form" style="display: none; margin-top: 15px;">
+                    <form action="{{ url_for("change_password") }}" method="post">
+                        <div class="mb-3">
+                            <label for="current-password" class="form-label">Current Password</label>
+                            <input name="old_password" type="password" class="form-control" id="current-password"
+                                   placeholder="Enter current password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="new-password" class="form-label">New Password</label>
+                            <input name="new_password" type="password" class="form-control" id="new-password"
+                                   placeholder="Enter new password">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                    </form>
+                </div>
+                <a href="#" id="edit-user-btn" class="btn btn-outline-secondary btn-sm">Edit Info</a>
+                <div id="edit-user-form" style="display: none; margin-top: 15px;">
+                    <form action="{{ url_for("change_user_info") }}" method="post">
+                        <div class="mb-3">
+                            <label for="user-name" class="form-label">Username</label>
+                            <input value="{{ user.name }}" name="name" type="text" class="form-control" id="user-name"
+                                   placeholder="Enter your name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="user-surname" class="form-label">Surname</label>
+                            <input value="{{ user.surname }}" name="surname" type="text" class="form-control"
+                                   id="user-surname"
+                                   placeholder="Enter your surname">
+                        </div>
+                        <div class="mb-3">
+                            <label for="user-email" class="form-label">Email</label>
+                            <input name="email" type="email" class="form-control" id="user-email"
+                                   value="{{ user.email }}" placeholder="Enter your email">
+                        </div>
+                        <button type="submit" class="btn btn-secondary btn-sm">Save</button>
+                    </form>
+                </div>
+                {% if data_check %}
+                    <a href="#" id="edit-info-btn" class="btn btn-outline-secondary btn-sm">Edit Address</a>
+                    <div id="edit-info-form" style="display: none; margin-top: 15px;">
+                        <form action="{{ url_for("checkout_update") }}" method="post">
+                            <div class="mb-3">
+                                <label for="surname" class="form-label">Surname</label>
+                                <input name="surname" type="text" class="form-control" id="surname"
+                                       value="{{ data_check.surname }}"
+                                       placeholder="Enter surname">
+                            </div>
+                            <div class="mb-3">
+                                <label for="company" class="form-label">Company Name</label>
+                                <input name="company" type="text" class="form-control" id="company"
+                                       value="{{ data_check.company_name }}"
+                                       placeholder="Enter company name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="country" class="form-label">Country</label>
+                                <select id="country" name="country" class="form-select form-control mt-2 mb-4"
+                                        aria-label="Default select example">
+                                    <option selected="" hidden="">Country</option>
+                                    {% for country in countries %}
+                                        <option value="{{ country }}">{{ country }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address_1" class="form-label">Street Address 1</label>
+                                <input name="address_1" type="text" class="form-control" id="address_1"
+                                       value="{{ data_check.street_address_1 }}"
+                                       placeholder="Enter street address">
+                            </div>
+                            <div class="mb-3">
+                                <label for="address_2" class="form-label">Street Address 2</label>
+                                <input name="address_2" type="text" class="form-control" id="address_2"
+                                       value="{{ data_check.street_address_2 }}"
+                                       placeholder="Apartment, suite, unit etc. (optional)">
+                            </div>
+                            <div class="mb-3">
+                                <label for="town" class="form-label">Town/City</label>
+                                <input name="town" type="text" class="form-control" id="town"
+                                       value="{{ data_check.town }}"
+                                       placeholder="Enter city or town">
+                            </div>
+                            <div class="mb-3">
+                                <label for="state" class="form-label">State</label>
+                                <input name="state" type="text" class="form-control" id="state"
+                                       value="{{ data_check.state }}"
+                                       placeholder="Enter state or region">
+                            </div>
+                            <div class="mb-3">
+                                <label for="zip" class="form-label">ZIP Code</label>
+                                <input name="zip" type="text" class="form-control" id="zip"
+                                       value="{{ data_check.zip_code }}"
+                                       placeholder="Enter ZIP code">
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input name="phone" type="text" class="form-control" id="phone"
+                                       value="{{ data_check.number }}"
+                                       placeholder="Enter phone number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="information" class="form-label">Additional Info</label>
+                                <textarea name="information" class="form-control" id="information"
+                                          placeholder="Notes about your order, delivery instructions, etc.">{{ data_check.information }}</textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-secondary btn-sm">Save</button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
+<script src="../static/js/script2.js"></script>
+</body>
+</html>

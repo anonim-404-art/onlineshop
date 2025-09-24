@@ -1,0 +1,80 @@
+{% extends "basic_black.html" %}
+{% block content %}
+<div class="container my-5">
+    <div class="p-4 border rounded shadow-sm bg-white position-relative" style="max-width: 700px; margin: auto;">
+
+        <!-- ❌ Red Cancel Button (Visual and Inside the Form) -->
+        <a href="{{ url_for('product') }}"
+           class="btn btn-sm btn-outline-danger position-absolute"
+           style="top: 16px; right: 16px; font-size: 1.2rem; border-radius: 50%; width: 36px; height: 36px; padding: 4px 0; text-align: center;">
+            &times;
+        </a>
+
+        <h2 class="mb-4 text-center">Edit Product</h2>
+
+        <form action="{{ url_for("product_edit", product_id=product.id) }}" method="POST" enctype="multipart/form-data">
+
+            <!-- Name -->
+            <div class="mb-3">
+                <label for="name" class="form-label fw-semibold">Product Name</label>
+                <input value="{{ product.name }}" type="text" name="name" id="name" class="form-control" required>
+            </div>
+
+            <!-- Price -->
+            <div class="mb-3">
+                <label for="price" class="form-label fw-semibold">Price ($)</label>
+                <input type="number" step="0.01" name="price" id="price" class="form-control"
+                       value="{{ product.price }}" required>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label for="description" class="form-label fw-semibold">Description</label>
+                <textarea name="description" id="description" rows="4" class="form-control"
+                          placeholder="Describe the product...">{{ product.description }}</textarea>
+            </div>
+
+            <!-- Colors -->
+            <div class="mb-3">
+                                    <label for="colors" class="form-label fw-semibold">Select Colors</label>
+                    <select name="colors" id="colors" class="form-select" multiple required>
+                        <option value="Red">Red</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Green">Green</option>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                        <option value="Yellow">Yellow</option>
+                    </select>
+                    <small class="text-muted">Hold Ctrl (Cmd) to select multiple</small>
+            </div>
+
+            <!-- Image Uploads -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Update Images (optional)</label>
+
+                <div class="form-text mb-2">Leave blank if you don't want to change an image.</div>
+
+                <label class="form-label">Front Image</label>
+                <input type="file" name="image" class="form-control mb-2" accept="image/*">
+
+                <label class="form-label">Back Image</label>
+                <input type="file" name="back_image" class="form-control mb-2" accept="image/*">
+
+                <label class="form-label">Side Image</label>
+                <input type="file" name="side_image" class="form-control mb-2" accept="image/*">
+
+                <label class="form-label">Bottom Image</label>
+                <input type="file" name="bottom_image" class="form-control mb-2" accept="image/*">
+
+                <label class="form-label">Additional Image</label>
+                <input type="file" name="just_image" class="form-control" accept="image/*">
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary px-5 py-2">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
